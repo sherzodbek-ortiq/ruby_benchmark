@@ -6,11 +6,13 @@ ENV APP_HOME /ruby_benchmark
 RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
-ADD Gemfile* $APP_HOME/
+COPY Gemfile $APP_HOME/Gemfile
+COPY Gemfile.lock $APP_HOME/Gemfile.lock
+
 RUN bundle install --without development test
 
-ADD . $APP_HOME
+COPY . $APP_HOME
 
-EXPOSE 4567
+EXPOSE 3000
 
-CMD ["bundle", "exec", "rackup", "config.ru", "--host", "0.0.0.0", "-p", "4567"]
+CMD ["bundle", "exec", "rackup", "config.ru", "--host", "0.0.0.0", "-p", "3000"]
