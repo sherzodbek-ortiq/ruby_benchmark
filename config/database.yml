@@ -1,0 +1,19 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  port: 5432
+  database: ruby_benchmark_development
+  pool: 5
+  username: ruby_benchmark
+  password: password
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  port: 5432
+  database: ruby_benchmark_production
+  pool: 5
+  username: ruby_benchmark
+  password: password
