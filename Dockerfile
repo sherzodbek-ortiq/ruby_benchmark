@@ -15,4 +15,4 @@ COPY . $APP_HOME
 
 EXPOSE 3000
 
-CMD ["bundle", "exec", "rackup", "config.ru", "--host", "0.0.0.0", "-p", "3000"]
+CMD ["bundle", "exec", "rerun", "--background", "rackup config.ru --host 0.0.0.0 -p 3000"]
