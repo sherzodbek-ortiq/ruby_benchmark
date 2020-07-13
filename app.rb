@@ -11,7 +11,7 @@ get '/benchmark' do
 end
 
 post '/benchmark' do
-	BenchmarkInfo.create(average_execution_time:"0.5")
   code = params[:file][:tempfile].read
 	BenchmarkWorker.perform_async(code)
+	json BenchmarkInfo.create(average_execution_time:"0.5")
 end
