@@ -12,8 +12,6 @@ end
 
 post '/benchmark' do
 	BenchmarkInfo.create(average_execution_time:"0.5")
-	BenchmarkWorker.perform_async("minimum_hard")
-  code = params[:file][:tempfile]
-  return code
-	#STDERR.puts params[:file][:filename]
+  code = params[:file][:tempfile].read
+	BenchmarkWorker.perform_async(code)
 end
