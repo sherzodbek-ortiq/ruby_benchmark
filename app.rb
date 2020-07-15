@@ -11,7 +11,12 @@ get '/benchmark' do
 end
 
 post '/benchmark' do
-  code = params[:file][:tempfile].read
-	BenchmarkWorker.perform_async(code)
-	json BenchmarkInfo.create(average_execution_time:"0.5")
+	if params[:file].present?
+  	code = params[:file][:tempfile].read
+		benchmark_info  = BenchmarkInfo.create(file_name: params[:file][:filename])
+		BenchmarkWorker.perform_async(benchmark_info.id, code)
+		json({benchmark_info_id: benchmark_info.id})
+	else
+		json({error:"No file"})
+	end
 end
