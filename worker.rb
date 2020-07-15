@@ -27,10 +27,14 @@ class BenchmarkWorker
 				median_execution_time: median(execution_time),
 				min_execution_time: execution_time.min,
 				max_execution_time: execution_time.max,
-				error_message: "Exit status: 0"
+				error_message: "Exit status: 0",
+				benchmark_status: "completed"
 			)
 		else
-			BenchmarkInfo.find(benchmark_info_id).update( error_message: "Exit status: " + (exit_status == false ? "1" : "nil"))
+			BenchmarkInfo.find(benchmark_info_id).update(
+				benchmark_status: "completed",
+				error_message: "Exit status: " + (exit_status == false ? "1" : "nil")
+			)
 		end
 	end
 

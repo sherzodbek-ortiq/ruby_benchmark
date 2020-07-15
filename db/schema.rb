@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_15_011742) do
+ActiveRecord::Schema.define(version: 2020_07_15_081031) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2020_07_15_011742) do
     t.float "median_execution_time"
     t.float "min_execution_time"
     t.float "max_execution_time"
+    t.string "benchmark_status"
   end
 
 end

@@ -13,7 +13,7 @@ end
 post '/benchmark' do
 	if params[:file].present?
   	code = params[:file][:tempfile].read
-		benchmark_info  = BenchmarkInfo.create(file_name: params[:file][:filename])
+		benchmark_info  = BenchmarkInfo.create(file_name: params[:file][:filename], benchmark_status: "on process")
 		BenchmarkWorker.perform_async(benchmark_info.id, code)
 		json({benchmark_info_id: benchmark_info.id})
 	else
